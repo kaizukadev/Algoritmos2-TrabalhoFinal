@@ -20,8 +20,8 @@ Crie um "fork" do repositório do trabalho, encontrado no link:
 Você deve, para obter o conceito C, implementar as seguintes 
 funcionalidades:
 
-- Implementar uma lista duplamente encadeada que utilize Generics para 
-garantir o armazenamento de objetos de um tipo específico.
+- ~~Implementar uma lista duplamente encadeada que utilize Generics para 
+garantir o armazenamento de objetos de um tipo específico.~~
 
 - A lista deve permitir a procura de elementos por qualquer atributo 
 presente no objeto.
@@ -32,8 +32,8 @@ partir de dois ou mais campos do objeto armazenado.
 - A lista deve conter um método para imprimir, no console, todos os 
 objetos armazenados.
 
-- Na inicialização programa que armazena objetos do tipo Aluno, você 
-deve carregar o arquivo de dados CSV, em anexo.
+- ~~Na inicialização programa que armazena objetos do tipo Aluno, você 
+deve carregar o arquivo de dados CSV, em anexo.~~
 
 Para obter o conceito B, você deve implementar todos os items para 
 obter o conceito C, e mais:
