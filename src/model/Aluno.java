@@ -69,5 +69,16 @@ public class Aluno {
 		return "";
 	}
 
+	public static void header00(int nc, String msg) {
+		System.out.println(snf.Tools.repeatStr("=", nc));
+		System.out.println(msg);
+		System.out.println(snf.Tools.repeatStr("=", nc));
+	}
+	
+	public static void header01(int nc) {
+		System.out.printf("%-11s %-35s %-35s %-6s %-6s %-20s %-20s%1s\n","| Matrícula","| Nome","| Email","| Idade","| Sexo","| Empresa","| Cidade","|");
+		System.out.println(snf.Tools.repeatStr("=", nc));
+	}
+
 
 }

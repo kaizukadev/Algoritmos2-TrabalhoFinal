@@ -23,11 +23,11 @@ funcionalidades:
 - ~~Implementar uma lista duplamente encadeada que utilize Generics para 
 garantir o armazenamento de objetos de um tipo específico.~~
 
-- A lista deve permitir a procura de elementos por qualquer atributo 
-presente no objeto.
+- ~~A lista deve permitir a procura de elementos por qualquer atributo 
+presente no objeto.~~
 
-- A lista deve permitir que a procura de elemntos possa ser realizada a 
-partir de dois ou mais campos do objeto armazenado.
+- ~~A lista deve permitir que a procura de elemntos possa ser realizada a 
+partir de dois ou mais campos do objeto armazenado.~~
 
 - ~~A lista deve conter um método para imprimir, no console, todos os 
 objetos armazenados.~~

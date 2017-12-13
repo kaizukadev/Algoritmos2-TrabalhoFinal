@@ -8,8 +8,7 @@ public class SearchByEmail implements Comparator<Aluno> {
 
 	@Override
 	public int compare(Aluno o1, Aluno o2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return o1.getEmail().compareTo(o2.getEmail());
 	}
-
 }
+

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
 
+import comparators.SearchByName;
 import model.Aluno;
 
 
@@ -43,24 +44,15 @@ public class ListaEncadeada<T> {
 
 	}
 	
-	public T search(T key, Comparator<T> cmp)
-	{
-		return null;
-	}
-	
 	public void printObjects() {
 		int nc=141;
 		int ne=0;
-		System.out.println(snf.Tools.repeatStr("=", nc));
-		System.out.println(" ** LISTA ENCADEADA **");
-		System.out.println(snf.Tools.repeatStr("=", nc));
-        System.out.printf("%-11s %-35s %-35s %-6s %-6s %-20s %-20s%1s\n","| Matrícula","| Nome","| Email","| Idade","| Sexo","| Empresa","| Cidade","|");
-		System.out.println(snf.Tools.repeatStr("=", nc));
-		
+		Aluno.header00(nc," ** LISTA ENCADEADA **");
+		Aluno.header01(nc);
 		
 		Node<T> i = head;
 		while (i != null) {
-			if (ne%2==0)
+//			if (ne%2==0)
 				System.out.println(i.getData());
 			
 			i = i.getNext();
@@ -104,6 +96,21 @@ public class ListaEncadeada<T> {
 		return le;
 	}
 
+	public T search(T key, Comparator<T> cmp) {
+		Node<T> i = head;
+		T obj = null;
+		while (i != null) {
+			obj = i.getData();
+
+			if (cmp.compare(key,obj) == 0)
+				break;
+			
+			i = i.getNext();
+		}
+		return obj;
+	}
+	
+	
 	
 	
 }
