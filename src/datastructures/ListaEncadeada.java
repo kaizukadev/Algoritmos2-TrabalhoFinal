@@ -44,10 +44,10 @@ public class ListaEncadeada<T> {
 
 	}
 	
-	public void printObjects() {
+	public void printObjects(String msg) {
 		int nc=141;
 		int ne=0;
-		Aluno.header00(nc," ** LISTA ENCADEADA **");
+		Aluno.header00(nc,msg);
 		Aluno.header01(nc);
 		
 		Node<T> i = head;
