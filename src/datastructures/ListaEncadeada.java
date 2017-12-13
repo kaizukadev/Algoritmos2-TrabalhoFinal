@@ -52,19 +52,13 @@ public class ListaEncadeada<T> {
 		
 		Node<T> i = head;
 		while (i != null) {
-//			if (ne%2==0)
-				System.out.println(i.getData());
-			
+			System.out.println(i.getData());
 			i = i.getNext();
 			ne++;
-
 		}
 		System.out.println(snf.Tools.repeatStr("=", nc));
 		System.out.println(" >> Total de Elementos da Lista Encadeada: " + ne + "\n\n");
-
-	
 	}
-
 
 	public static ListaEncadeada<Aluno> loadFromFile(FileReader arquivo) {
 		ListaEncadeada<Aluno> le = new ListaEncadeada<Aluno>();
