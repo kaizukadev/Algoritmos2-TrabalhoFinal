@@ -9,7 +9,7 @@ import comparators.SearchByName;
 import datastructures.ListaEncadeada;
 import model.Aluno;
 
-public class ProgramaC_Alunos {
+public class ProgramaC_Alunos2 {
 
 	private static final String name = "";
 	private static final String email = "";
@@ -25,8 +25,6 @@ public class ProgramaC_Alunos {
 			System.exit(1);
 		}
 		ListaEncadeada<Aluno> lista = ListaEncadeada.loadFromFile(arquivo);
-		
-		lista.printObjects();
 /*
 		Aluno busca = new Aluno(name, email, idade, cidade);
 		System.out.println(lista.search(busca, new SearchByName()));

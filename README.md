@@ -29,8 +29,8 @@ presente no objeto.
 - A lista deve permitir que a procura de elemntos possa ser realizada a 
 partir de dois ou mais campos do objeto armazenado.
 
-- A lista deve conter um método para imprimir, no console, todos os 
-objetos armazenados.
+- ~~A lista deve conter um método para imprimir, no console, todos os 
+objetos armazenados.~~
 
 - ~~Na inicialização programa que armazena objetos do tipo Aluno, você 
 deve carregar o arquivo de dados CSV, em anexo.~~

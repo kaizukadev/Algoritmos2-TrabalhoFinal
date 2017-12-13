@@ -56,4 +56,18 @@ public class Aluno {
 	public String getCidade() {
 		return cidade;
 	}
+
+
+	public String toString2() {
+		return "Aluno [matricula=" + matricula + ", nome=" + nome + ", email=" + email + ", idade=" + idade + ", sexo="
+				+ sexo + ", empresa=" + empresa + ", cidade=" + cidade + "]";
+	}
+
+//	@Override
+	public String toString() {
+        System.out.printf(" %-12s%-35s %-35s %7d %-6s %-20s %-20s",matricula,nome,email,idade,sexo,empresa,cidade);
+		return "";
+	}
+
+
 }
