@@ -4,15 +4,13 @@ import interfaces.Predicado;
 import model.Aluno;
 
 public class NamePredicate implements Predicado<Aluno> {
-
+	String p_nome;
 	public NamePredicate(String name) {
-		// TODO Auto-generated constructor stub
+		this.p_nome = name;
 	}
 
 	@Override
 	public boolean teste(Aluno objeto) {
-		// TODO Auto-generated method stub
-		return false;
+		return objeto.getNome().equals(p_nome);
 	}
-
 }

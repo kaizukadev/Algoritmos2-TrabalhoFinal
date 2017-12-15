@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.Comparator;
 
 import comparators.SearchByName;
+import interfaces.Predicado;
 import model.Aluno;
-
-
+import predicates.NamePredicate;
 
 public class ListaEncadeada<T> {
 	private Node<T> head;
@@ -41,7 +41,6 @@ public class ListaEncadeada<T> {
 		head.setPrevious(newNode);
 		}
 		this.head = newNode;
-
 	}
 	
 	public void printObjects(String msg) {
@@ -101,10 +100,45 @@ public class ListaEncadeada<T> {
 			
 			i = i.getNext();
 		}
+
+		if (i == null) {
+			snf.Tools.msg("** Objeto não foi localizado!\n");
+			obj = null;
+		}
+		
 		return obj;
 	}
+
+	public void removeIf(Predicado<T> predicado) {
+		Node<T> i = head;
+		T obj = null;
+		while (i != null) {
+			obj = i.getData();
+//			System.out.println(obj);
+			if (predicado.teste(obj)) {
+				this.remove(i);
+//				System.out.println("removeu");
+			}
+			i = i.getNext();
+		}
+	}
 	
+	public void remove(Node<T> node) {
+		while (!isEmpty()) {
+			Node<T> p = node.getPrevious();
+			Node<T> n = node.getNext();
+
+			// Caso o nó excluído seja head ou tail
+			if (node == this.head)
+				this.head = n;
+			if (node == this.tail)
+				this.tail = p;
+
+			// Excluindo
+			p.setNext(n);
+			n.setPrevious(p);
+			break;
+		}
+	}
 	
-	
-	
-}
+}  //---------------

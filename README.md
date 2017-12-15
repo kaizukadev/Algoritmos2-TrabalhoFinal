@@ -38,10 +38,10 @@ deve carregar o arquivo de dados CSV, em anexo.~~
 Para obter o conceito B, você deve implementar todos os items para 
 obter o conceito C, e mais:
 
-- Implementar um método para remover um objeto específico da lista.
+- ~~Implementar um método para remover um objeto específico da lista.~~
 
-- Implementar um método para remover todos os objeto que forem 
-compatíveis com um predicado.
+- ~~Implementar um método para remover todos os objeto que forem 
+compatíveis com um predicado.~~
 
 - Você deve inserir um método que crie um filtro para a lista 
 encadeada, criado uma nova lista encadeada com os objetos aceitos pelo 
