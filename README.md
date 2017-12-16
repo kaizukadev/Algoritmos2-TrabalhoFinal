@@ -43,10 +43,10 @@ obter o conceito C, e mais:
 - ~~Implementar um método para remover todos os objeto que forem 
 compatíveis com um predicado.~~
 
-- Você deve inserir um método que crie um filtro para a lista 
+- ~~Você deve inserir um método que crie um filtro para a lista 
 encadeada, criado uma nova lista encadeada com os objetos aceitos pelo 
 filtro provido. O filtro pode ser criado para qualquer campo, ou 
-vários, do objeto armazenado.
+vários, do objeto armazenado.~~
 
 - Você deve modificar a carga dos dados do arquivo CSV, de forma que a 
 lista fique ordenada pelo "número de matrícula".

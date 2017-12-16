@@ -11,6 +11,6 @@ public class NamePredicate implements Predicado<Aluno> {
 
 	@Override
 	public boolean teste(Aluno objeto) {
-		return objeto.getNome().equals(p_nome);
+		return objeto.getNome().equalsIgnoreCase(p_nome);
 	}
 }

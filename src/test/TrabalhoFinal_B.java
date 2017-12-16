@@ -8,6 +8,7 @@ import comparators.SearchByEmail;
 import comparators.SearchByName;
 import datastructures.ListaEncadeada;
 import model.Aluno;
+import predicates.GenderAndAgePredicate;
 import predicates.NamePredicate;
 
 public class TrabalhoFinal_B {
@@ -58,10 +59,12 @@ public class TrabalhoFinal_B {
 		if (lista.search(busca, new SearchByName()) != null)
 			System.out.println(name + " nao deveria estar na lista.");
 		System.out.println(snf.Tools.repeatStr("=", nc));
+		System.out.println("");
 
-//		lista.printObjects(" ** LISTA ENCADEADA - Após exclusão **");
 
-
+		// Lista nova, filtrada
+		ListaEncadeada<Aluno> lista2 = lista.filter(new GenderAndAgePredicate("female", 20, 30));
+		lista2.printObjects(" ** NOVA LISTA ENCADEADA - Filtrada - Mulheres entre 20 e 30 anos (inclusive) **");
 
 
 

@@ -140,5 +140,20 @@ public class ListaEncadeada<T> {
 			break;
 		}
 	}
-	
+
+	public ListaEncadeada<T> filter(Predicado<T> predicado) {
+		ListaEncadeada<T> le = new ListaEncadeada<T>();
+		Node<T> i = this.head;
+		T obj = null;
+		while (i != null) {
+			obj = i.getData();
+			if (predicado.teste(obj)) {
+				le.append(obj);
+			}
+			i = i.getNext();
+		}
+		return le;
+	}
+
+
 }  //---------------
