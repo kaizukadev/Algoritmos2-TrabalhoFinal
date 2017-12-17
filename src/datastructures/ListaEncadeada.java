@@ -60,7 +60,7 @@ public class ListaEncadeada<T> {
 		System.out.println(" >> Total de Elementos da Lista Encadeada: " + ne + "\n\n");
 	}
 
-	public static ListaEncadeada<Aluno> loadFromFile(FileReader arquivo) {
+	public static ListaEncadeada<Aluno> loadFromFile(FileReader arquivo, Comparator<Aluno> cmp) {
 		ListaEncadeada<Aluno> le = new ListaEncadeada<Aluno>();
 		final String SEPARADOR = ",";
 		BufferedReader is = null;
@@ -73,7 +73,7 @@ public class ListaEncadeada<T> {
 				Aluno a = new Aluno(dl[0], dl[1], dl[2], Integer.parseInt(dl[3]), dl[4], dl[5], dl[6]);
 
 				// Inclusão ordenada
-				le.sortedInsert(a, new SearchByRegistration());
+				le.sortedInsert(a, cmp);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

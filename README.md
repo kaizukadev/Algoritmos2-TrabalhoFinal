@@ -57,8 +57,8 @@ para obter o conceito B, e ao menos um dos dois métodos:
 - Implementar o conceito de "Iterador" na lista, de forma que se possa 
 adicionar objetos a partir do iterador.
 
-- Alterar a lista para que seja possível carregar a lista do arquivo 
-ordenando a partir de um atributo qualquer.
+- ~~Alterar a lista para que seja possível carregar a lista do arquivo 
+ordenando a partir de um atributo qualquer.~~
 
 ## Interfaces:
 
