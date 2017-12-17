@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Comparator;
 
 import comparators.SearchByName;
+import comparators.SearchByRegistration;
 import interfaces.Predicado;
 import model.Aluno;
 import predicates.NamePredicate;
@@ -70,7 +71,9 @@ public class ListaEncadeada<T> {
 			while ((linha = is.readLine()) != null) {
 				dl = linha.split(SEPARADOR);
 				Aluno a = new Aluno(dl[0], dl[1], dl[2], Integer.parseInt(dl[3]), dl[4], dl[5], dl[6]);
-				le.append(a);
+
+				// Inclusão ordenada
+				le.sortedInsert(a, new SearchByRegistration());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -85,6 +88,29 @@ public class ListaEncadeada<T> {
 			}
 		}
 		return le;
+	}
+	
+	private void sortedInsert(T key, Comparator<T> cmp) {
+		if (this.isEmpty())
+			this.append(key);
+		else {
+			Node<T> i = this.head;
+			T obj = null;
+			boolean fi = false;
+			while (i != null) {
+				obj = i.getData();
+				if (cmp.compare(key, obj) < 0) {
+					this.insertBefore(i, key);
+					fi = true;
+					break;
+				}
+				i = i.getNext();
+			}
+
+			if (!fi) {
+				this.append(key);
+			}
+		}
 	}
 
 	public T search(T key, Comparator<T> cmp) {

@@ -48,8 +48,8 @@ encadeada, criado uma nova lista encadeada com os objetos aceitos pelo
 filtro provido. O filtro pode ser criado para qualquer campo, ou 
 vários, do objeto armazenado.~~
 
-- Você deve modificar a carga dos dados do arquivo CSV, de forma que a 
-lista fique ordenada pelo "número de matrícula".
+- ~~Você deve modificar a carga dos dados do arquivo CSV, de forma que a 
+lista fique ordenada pelo "número de matrícula".~~
 
 Para obter o conceito A, você deve implementar todas as funcionalidades 
 para obter o conceito B, e ao menos um dos dois métodos:

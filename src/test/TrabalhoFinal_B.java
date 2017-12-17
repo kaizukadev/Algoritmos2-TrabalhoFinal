@@ -28,7 +28,7 @@ public class TrabalhoFinal_B {
 		}
 		ListaEncadeada<Aluno> lista = ListaEncadeada.loadFromFile(arquivo);
 		
-		lista.printObjects(" ** LISTA ENCADEADA - Original - Ordenada por leitura **");
+		lista.printObjects(" ** LISTA ENCADEADA - Original - Ordenada por Matrícula **");
 
 		Aluno busca = new Aluno(name, email, idade, cidade);
 		System.out.println("Dados para busca:");
