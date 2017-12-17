@@ -69,10 +69,8 @@ public class ListaEncadeada<T> {
 		try {
 			while ((linha = is.readLine()) != null) {
 				dl = linha.split(SEPARADOR);
-				
 				Aluno a = new Aluno(dl[0], dl[1], dl[2], Integer.parseInt(dl[3]), dl[4], dl[5], dl[6]);
 				le.append(a);
-//				System.out.println(a);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -114,10 +112,8 @@ public class ListaEncadeada<T> {
 		T obj = null;
 		while (i != null) {
 			obj = i.getData();
-//			System.out.println(obj);
 			if (predicado.teste(obj)) {
 				this.remove(i);
-//				System.out.println("removeu");
 			}
 			i = i.getNext();
 		}
@@ -155,5 +151,14 @@ public class ListaEncadeada<T> {
 		return le;
 	}
 
+	public void insertBefore(Node<T> Node, T dado) {
+		if(Node == this.head)
+			this.addFirst(dado);
+		else {
+			Node<T> newNode = new Node<T>(dado, Node.getPrevious(), Node);
+			Node.getPrevious().setNext(newNode);;
+			Node.setPrevious(newNode);
+		}
+	}
 
 }  //---------------

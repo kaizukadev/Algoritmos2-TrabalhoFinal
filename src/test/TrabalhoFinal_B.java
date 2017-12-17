@@ -61,7 +61,6 @@ public class TrabalhoFinal_B {
 		System.out.println(snf.Tools.repeatStr("=", nc));
 		System.out.println("");
 
-
 		// Lista nova, filtrada
 		ListaEncadeada<Aluno> lista2 = lista.filter(new GenderAndAgePredicate("female", 20, 30));
 		lista2.printObjects(" ** NOVA LISTA ENCADEADA - Filtrada - Mulheres entre 20 e 30 anos (inclusive) **");
