@@ -1,5 +1,10 @@
 package snf;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Tools {
 	public static final String MSG_01 = "Não é possivel incluir. Número máximo já foi atingido";
 
@@ -23,9 +28,25 @@ public class Tools {
 		return ret;
 	}
 
-
-
-
-
-
+	public static FileReader leitorArquivo(String arqCSV) {
+		FileReader arquivo = null;
+		try {
+			arquivo = new FileReader(arqCSV);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return arquivo;
+	}
+	
+	public static void closeReader(BufferedReader is) {
+		if (is != null) {
+			try {
+				is.close();
+			} catch (IOException e) {
+				snf.Tools.errormsg(e,true);	
+			}
+		}
+	}
+	
 }

@@ -1,4 +1,4 @@
-﻿![GitHub Logo](/data/UC.jpg)
+﻿![FinalResult](/data/FR.jpg)
 
 Trabalho Final
 ==============
@@ -54,8 +54,8 @@ lista fique ordenada pelo "número de matrícula".~~
 Para obter o conceito A, você deve implementar todas as funcionalidades 
 para obter o conceito B, e ao menos um dos dois métodos:
 
-- Implementar o conceito de "Iterador" na lista, de forma que se possa 
-adicionar objetos a partir do iterador.
+- ~~Implementar o conceito de "Iterador" na lista, de forma que se possa 
+adicionar objetos a partir do iterador.~~
 
 - ~~Alterar a lista para que seja possível carregar a lista do arquivo 
 ordenando a partir de um atributo qualquer.~~

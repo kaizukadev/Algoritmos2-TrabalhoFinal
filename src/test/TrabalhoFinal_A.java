@@ -22,13 +22,10 @@
 
 package test;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-
 import comparators.SearchByAgeAndCity;
 import comparators.SearchByEmail;
 import comparators.SearchByName;
-import comparators.SearchByRegistration;
 import comparators.SortedByReading;
 import datastructures.ListaEncadeada;
 import interfaces.Iterador;
@@ -48,7 +45,7 @@ public class TrabalhoFinal_A {
 		// TRABALHO CONCEITO "C" =============================================
 		String arqCSV = "data/alunos.csv";
 
-		FileReader arquivo = leitorArquivo(arqCSV);
+		FileReader arquivo = snf.Tools.leitorArquivo(arqCSV);
 		ListaEncadeada<Aluno> lista = ListaEncadeada.loadFromFile(arquivo, new SortedByReading());
 		lista.printObjects(" ** LISTA ENCADEADA - Original - Ordenada por Leitura **");
 
@@ -82,8 +79,8 @@ public class TrabalhoFinal_A {
 		System.out.println(snf.Tools.repeatStr("=", nc));
 		System.out.println("");
 
-		arquivo = leitorArquivo(arqCSV);
-		lista = ListaEncadeada.loadFromFile(arquivo, new SearchByRegistration());
+		arquivo = snf.Tools.leitorArquivo(arqCSV);
+		lista = ListaEncadeada.loadFromFile(arquivo);
 		lista.printObjects(" ** LISTA ENCADEADA - Ordenada por Matrícula **");
 
 		// Lista nova, filtrada
@@ -95,24 +92,26 @@ public class TrabalhoFinal_A {
 		while (iterador.hasNext()) {
 			System.out.println(iterador.next().getEmail());
 		}
+		System.out.println("");
 
-			
-			
-			
-			
-			
-			
+		// Lista nova, filtrada
+		ListaEncadeada<Aluno> lista2 = lista.filter(new NamePredicate(name));
+		lista2.printObjects(" ** NOVA LISTA ENCADEADA - Iterada **");
 
-	}
-
-	private static FileReader leitorArquivo(String arqCSV) {
-		FileReader arquivo = null;
-		try {
-			arquivo = new FileReader(arqCSV);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.exit(1);
+		Aluno a1 = lista2.search(busca, new SearchByName());
+		Aluno a2 = new Aluno("a9583c8a","Yvonne Ayala","yvonneayala@pheast.com",38,"female","PHEAST","Chesterfield");
+		Aluno a3 = new Aluno("79eb2f3e","Johnnie Bishop","johnniebishop@conjurica.com",22,"female","CONJURICA","Clay");
+		
+		iterador = lista2.iterador();
+		while (iterador.hasNext()) {
+			if (iterador.next() == a1) {
+				iterador.addBefore(a3);
+				iterador.addAfter(a2);
+			}
 		}
-		return arquivo;
+
+		lista2.printObjects(" ** NOVA LISTA ENCADEADA - Iterada - Inclusão com Iterador **");
+		
+		
 	}
 }

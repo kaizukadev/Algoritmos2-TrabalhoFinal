@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
 
+import comparators.SearchByRegistration;
 import interfaces.Predicado;
 import model.Aluno;
 import interfaces.Iterador;
@@ -19,10 +20,6 @@ public class ListaEncadeada<T> implements Iterador<T>{
 		this.tail = null;
 		this.cursor = null;
 	}  
-
-	public boolean isEmpty() {
-		return this.head == null && this.tail == null;   
-	}
 
 	public void append(T dado) {
 		Node<T> newNode = new Node<T>(dado, this.tail, null);
@@ -44,6 +41,26 @@ public class ListaEncadeada<T> implements Iterador<T>{
 		this.head = newNode;
 	}
 	
+	public T search(T key, Comparator<T> cmp) {
+		Node<T> i = head;
+		T obj = null;
+		while (i != null) {
+			obj = i.getData();
+
+			if (cmp.compare(key,obj) == 0)
+				break;
+			
+			i = i.getNext();
+		}
+
+		if (i == null) {
+			snf.Tools.msg("** Objeto não foi localizado!\n");
+			obj = null;
+		}
+		
+		return obj;
+	}
+
 	public void printObjects(String msg) {
 		int nc=141;
 		int ne=0;
@@ -60,6 +77,30 @@ public class ListaEncadeada<T> implements Iterador<T>{
 		System.out.println(" >> Total de Elementos da Lista Encadeada: " + ne + "\n\n");
 	}
 
+	public static ListaEncadeada<Aluno> loadFromFile(FileReader arquivo) {
+		ListaEncadeada<Aluno> le = new ListaEncadeada<Aluno>();
+		final String SEPARADOR = ",";
+		BufferedReader is = null;
+		String linha = null;
+		String[] dl;
+		is = new BufferedReader(arquivo);
+		try {
+			while ((linha = is.readLine()) != null) {
+				dl = linha.split(SEPARADOR);
+				Aluno a = new Aluno(dl[0], dl[1], dl[2], Integer.parseInt(dl[3]), dl[4], dl[5], dl[6]);
+
+				// Inclusão ordenada
+				le.sortedInsert(a, new SearchByRegistration());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} finally {
+			snf.Tools.closeReader(is);
+		}
+		return le;
+	}
+	
 	public static ListaEncadeada<Aluno> loadFromFile(FileReader arquivo, Comparator<Aluno> cmp) {
 		ListaEncadeada<Aluno> le = new ListaEncadeada<Aluno>();
 		final String SEPARADOR = ",";
@@ -79,17 +120,15 @@ public class ListaEncadeada<T> implements Iterador<T>{
 			e.printStackTrace();
 			System.exit(1);
 		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					snf.Tools.errormsg(e,true);	
-				}
-			}
+			snf.Tools.closeReader(is);
 		}
 		return le;
 	}
-	
+
+	public boolean isEmpty() {
+		return this.head == null && this.tail == null;   
+	}
+
 	private void sortedInsert(T key, Comparator<T> cmp) {
 		if (this.isEmpty())
 			this.append(key);
@@ -111,26 +150,6 @@ public class ListaEncadeada<T> implements Iterador<T>{
 				this.append(key);
 			}
 		}
-	}
-
-	public T search(T key, Comparator<T> cmp) {
-		Node<T> i = head;
-		T obj = null;
-		while (i != null) {
-			obj = i.getData();
-
-			if (cmp.compare(key,obj) == 0)
-				break;
-			
-			i = i.getNext();
-		}
-
-		if (i == null) {
-			snf.Tools.msg("** Objeto não foi localizado!\n");
-			obj = null;
-		}
-		
-		return obj;
 	}
 
 	public void removeIf(Predicado<T> predicado) {
@@ -180,10 +199,22 @@ public class ListaEncadeada<T> implements Iterador<T>{
 	public void insertBefore(Node<T> Node, T dado) {
 		if(Node == this.head)
 			this.addFirst(dado);
+		else if (Node == null)
+			this.append(dado);
 		else {
 			Node<T> newNode = new Node<T>(dado, Node.getPrevious(), Node);
 			Node.getPrevious().setNext(newNode);;
 			Node.setPrevious(newNode);
+		}
+	}
+
+	public void insertAfter(Node<T> Node, T dado) {
+		if(Node == this.tail || Node == null)
+			this.append(dado);
+		else {
+			Node<T> newNode = new Node<T>(dado, Node, Node.getNext());
+			Node.getNext().setPrevious(newNode);;
+			Node.setNext(newNode);
 		}
 	}
 
@@ -202,7 +233,7 @@ public class ListaEncadeada<T> implements Iterador<T>{
 
 	@Override
 	public boolean hasPrevious() {
-		return this.cursor.getPrevious() != null;
+		return this.cursor != null;
 	}
 
 	@Override
@@ -221,23 +252,18 @@ public class ListaEncadeada<T> implements Iterador<T>{
 
 	@Override
 	public void addBefore(T dado) {
-		// TODO Auto-generated method stub
-		
+		insertBefore(this.cursor, dado);
 	}
 
 	@Override
 	public void addAfter(T dado) {
-		// TODO Auto-generated method stub
-		
+		insertAfter(this.cursor, dado);
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		if (this.cursor != null) 
+			this.remove(cursor);
 	}
-
-
-
 
 }  //---------------
