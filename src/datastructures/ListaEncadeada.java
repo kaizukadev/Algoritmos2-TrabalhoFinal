@@ -5,19 +5,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
 
-import comparators.SearchByName;
-import comparators.SearchByRegistration;
 import interfaces.Predicado;
 import model.Aluno;
-import predicates.NamePredicate;
+import interfaces.Iterador;
 
-public class ListaEncadeada<T> {
+public class ListaEncadeada<T> implements Iterador<T>{
 	private Node<T> head;
 	private Node<T> tail;
-
+	private Node<T> cursor;
+	
 	public ListaEncadeada() {
 		this.head = null;
 		this.tail = null;
+		this.cursor = null;
 	}  
 
 	public boolean isEmpty() {
@@ -186,5 +186,58 @@ public class ListaEncadeada<T> {
 			Node.setPrevious(newNode);
 		}
 	}
+
+	// Implemenção da interface Iterador
+
+	@Override
+	public Iterador<T> iterador() {
+		this.cursor = head;
+		return this;
+	}
+
+	@Override
+	public boolean hasNext() {
+		return this.cursor != null;
+	}
+
+	@Override
+	public boolean hasPrevious() {
+		return this.cursor.getPrevious() != null;
+	}
+
+	@Override
+	public T next() {
+		T obj = cursor.getData();
+		cursor = cursor.getNext();
+		return obj;		
+	}
+
+	@Override
+	public T previous() {
+		T obj = cursor.getData();
+		cursor = cursor.getPrevious();
+		return obj;		
+	}
+
+	@Override
+	public void addBefore(T dado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addAfter(T dado) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 
 }  //---------------

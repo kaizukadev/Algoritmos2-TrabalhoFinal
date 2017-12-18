@@ -31,6 +31,7 @@ import comparators.SearchByName;
 import comparators.SearchByRegistration;
 import comparators.SortedByReading;
 import datastructures.ListaEncadeada;
+import interfaces.Iterador;
 import model.Aluno;
 import predicates.GenderAndAgePredicate;
 import predicates.NamePredicate;
@@ -90,7 +91,17 @@ public class TrabalhoFinal_A {
 		lista1.printObjects(" ** NOVA LISTA ENCADEADA - Filtrada - Mulheres entre 20 e 30 anos (inclusive) **");
 
 		// TRABALHO CONCEITO "A" =============================================
+		Iterador<Aluno> iterador = lista.iterador();
+		while (iterador.hasNext()) {
+			System.out.println(iterador.next().getEmail());
+		}
 
+			
+			
+			
+			
+			
+			
 
 	}
 
